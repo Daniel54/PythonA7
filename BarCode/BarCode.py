@@ -62,7 +62,12 @@ def main():
     """
 
     #throws index error if empty
-    printBarCode(sys.argv[1])
+    try:
+        printBarCode(sys.argv[1])
+    except IndexError:
+        print("Error: Zip code is not 5 digits")
+    except KeyError:
+        print("Error: Zip code must contain only numbers")
 
 if __name__== "__main__":
     main()
