@@ -26,10 +26,9 @@ def printBarCode(zipcode):
         zipcode -> the zipcode to be parsed. A zipcode
                    is a string of 5 numbers
     """
-    code = []
-    code.append('|') #opening guard bar
     code = [printDigit(x) for x in zipcode]
     code.append(computeCheckDigit(zipcode))
+    code.insert(0, '|')
     code.append('|') #ending guard bar
     print(''.join(code))
 
@@ -49,9 +48,19 @@ def computeCheckDigit(zipcode):
     #calculates the checkDigit by using weights
     #takes the result and modulo 10
     #subtract that result to get checkDigit
-    checkDigit = 7 * int(zipcode[0]) +4 * int(zipcode[1]) + 2 * int(zipcode[2]) + 1 * int(zipcode[3]) + 0 * int(zipcode[4])
+    #checkDigit = 7 * int(zipcode[0]) +4 * int(zipcode[1]) + 2 * int(zipcode[2]) + 1 * int(zipcode[3]) + 0 * int(zipcode[4])
     
+    checkDigit = 0
+    for x in zipcode:
+        checkDigit += int(x)
+
+
     checkDigit %= 10
+
+    #if the weight calculation is already divisible by 10
+    if checkDigit == 0:
+        return printDigit(0)
+
     checkDigit = 10 - checkDigit
     return printDigit(checkDigit)
 
