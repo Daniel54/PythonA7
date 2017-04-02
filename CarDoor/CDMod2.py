@@ -15,7 +15,7 @@ def get_file( url ):
             line = row.decode("utf-8")
             commands.append(line)
 
-    for i in range(4):  #####range(len(commands)):
+    for i in range(len(commands): 
         if( i != 0): #skip first index
             print("Reading Record: ", i)
             check_string(commands[i])
