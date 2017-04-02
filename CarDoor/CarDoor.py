@@ -53,11 +53,8 @@ def check_string( str ):
         print("Child lock is on")
     #Validate GS input. if NOT any of the valid options (P N D 1 2 3 R)
     if not (GS == "P" or GS == "N" or GS == "D" or GS == "1" or GS == "2" or GS == "3" or GS == "R"):
-        print("Invalid Record: Both Doors stay closed")
+        print("Invalid Record:")
     else:#only if valid gear shift, trip other swithces
-        print("Befor Switches")
-        print("Left Door var: ", LDoorOpen)
-        print("Right Door var: ", RDoorOpen)
 
         if GS == "P" and ML == 1:
         #check switches
@@ -74,10 +71,6 @@ def check_string( str ):
             if RO == 1:
                 RDoorOpen = True
 
-        print("After switches")
-        print("Left Door var: ", LDoorOpen)
-        print("Right Door var: ", RDoorOpen)
-        print("")
     #Check Door Status and output message
     #2 options that are binare (so 2^2 only leaves 4 different options)
     if LDoorOpen == True and RDoorOpen == True:
